@@ -1,3 +1,9 @@
+/** Public asset path — respects Vite `base` for GitHub Pages subpath deploys */
+export function publicAsset(path: string): string {
+  const key = path.replace(/^\//, '')
+  return `${import.meta.env.BASE_URL}${key}`
+}
+
 export type Orientation = 'landscape' | 'portrait'
 
 export type Artwork = {
@@ -62,19 +68,19 @@ export const instagramPreviewCaption =
   'Latest sketches and studio updates from Guildford — follow along for new work, sketchbook pages, and everyday scenes.'
 
 export const artistImage = {
-  src: '/images/artist1.jpg',
+  src: publicAsset('images/artist1.jpg'),
   alt: 'Caroline J Hill, visual artist',
 }
 
 export const artworks: Artwork[] = [
-  { id: '1', src: '/images/1.JPEG', orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
-  { id: '2', src: '/images/2.JPEG', orientation: 'portrait', alt: 'Watercolour and ink study by Caroline J Hill' },
-  { id: '3', src: '/images/3.JPEG', orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
-  { id: '4', src: '/images/4.JPEG', orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
-  { id: '5', src: '/images/5.JPEG', orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
-  { id: '6', src: '/images/6.JPEG', orientation: 'portrait', alt: 'Watercolour and ink study by Caroline J Hill' },
-  { id: '7', src: '/images/7.JPEG', orientation: 'portrait', alt: 'Watercolour and ink study by Caroline J Hill' },
-  { id: '8', src: '/images/8.JPEG', orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '1', src: publicAsset('images/1.JPEG'), orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '2', src: publicAsset('images/2.JPEG'), orientation: 'portrait', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '3', src: publicAsset('images/3.JPEG'), orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '4', src: publicAsset('images/4.JPEG'), orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '5', src: publicAsset('images/5.JPEG'), orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '6', src: publicAsset('images/6.JPEG'), orientation: 'portrait', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '7', src: publicAsset('images/7.JPEG'), orientation: 'portrait', alt: 'Watercolour and ink study by Caroline J Hill' },
+  { id: '8', src: publicAsset('images/8.JPEG'), orientation: 'landscape', alt: 'Watercolour and ink study by Caroline J Hill' },
 ]
 
 /** Used as Instagram card preview image (not live API content) */
