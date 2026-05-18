@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { roseStory } from '../data/artistContent'
 
 type Variant = 'editorial' | 'studio' | 'journal' | 'minimal'
@@ -6,12 +7,14 @@ type Props = {
   variant?: Variant
   showQuote?: boolean
   className?: string
+  linkTo?: string
 }
 
 export default function StoryPreview({
   variant = 'editorial',
   showQuote = true,
   className = '',
+  linkTo,
 }: Props) {
   const shells: Record<Variant, string> = {
     editorial: 'border-t border-pink-dusty/40 pt-8',
@@ -19,6 +22,9 @@ export default function StoryPreview({
     journal: 'border-l-2 border-pink-dusty pl-6',
     minimal: 'border-t border-navy/10 pt-8',
   }
+
+  const linkClass =
+    'text-sm font-sans text-navy border-b border-pink-dusty pb-0.5 hover:text-pink-dusty transition-colors'
 
   return (
     <article className={`${shells[variant]} ${className}`}>
@@ -34,13 +40,15 @@ export default function StoryPreview({
           {roseStory.quote}
         </blockquote>
       )}
-      <a
-        href="#story"
-        className="text-sm font-sans text-navy border-b border-pink-dusty pb-0.5 hover:text-pink-dusty transition-colors"
-        onClick={(e) => e.preventDefault()}
-      >
-        Read the story →
-      </a>
+      {linkTo ? (
+        <Link to={linkTo} className={linkClass}>
+          Read the story →
+        </Link>
+      ) : (
+        <a href="#story" className={linkClass} onClick={(e) => e.preventDefault()}>
+          Read the story →
+        </a>
+      )}
     </article>
   )
 }
