@@ -1,19 +1,23 @@
-import { HashRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/layout/Layout'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import GalleryPage from './pages/GalleryPage'
 import HomePage from './pages/HomePage'
 
+/** Strip trailing slash for React Router basename (e.g. /art_website_new) */
+const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '') || undefined
+
 export default function App() {
   return (
-    <HashRouter>
+    <HashRouter basename={routerBasename}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="gallery" element={<GalleryPage />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </HashRouter>
