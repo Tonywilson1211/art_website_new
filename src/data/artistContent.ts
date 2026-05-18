@@ -1,7 +1,9 @@
 /** Public asset path — respects Vite `base` for GitHub Pages subpath deploys */
 export function publicAsset(path: string): string {
+  const base = import.meta.env.BASE_URL
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`
   const key = path.replace(/^\//, '')
-  return `${import.meta.env.BASE_URL}${key}`
+  return `${normalizedBase}${key}`
 }
 
 export type Orientation = 'landscape' | 'portrait'

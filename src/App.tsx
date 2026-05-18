@@ -5,12 +5,9 @@ import ContactPage from './pages/ContactPage'
 import GalleryPage from './pages/GalleryPage'
 import HomePage from './pages/HomePage'
 
-/** Strip trailing slash for React Router basename (e.g. /art_website_new) */
-const routerBasename = import.meta.env.BASE_URL.replace(/\/$/, '') || undefined
-
 export default function App() {
   return (
-    <HashRouter basename={routerBasename}>
+    <HashRouter>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />

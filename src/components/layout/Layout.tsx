@@ -10,6 +10,23 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <div
+        aria-hidden
+        style={{
+          position: 'fixed',
+          bottom: 8,
+          right: 8,
+          zIndex: 9999,
+          fontSize: 10,
+          padding: '4px 8px',
+          background: '#1a2744',
+          color: '#f0e4e4',
+          borderRadius: 4,
+          opacity: 0.7,
+        }}
+      >
+        app mounted
+      </div>
     </div>
   )
 }
